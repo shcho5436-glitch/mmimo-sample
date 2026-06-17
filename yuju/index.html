@@ -1,0 +1,149 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>유주의 첫돌 초대장</title>
+
+  <meta property="og:title" content="유주의 첫돌에 초대합니다" />
+  <meta property="og:description" content="유주의 첫 선택은 무엇일까요? 소중한 자리에 초대합니다." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.mmimo.kr/yuju" />
+  <meta property="og:image" content="https://www.mmimo.kr/yuju/assets/hero-bg.png" />
+
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="page">
+    <section class="hero">
+      <div class="scene">
+        <img class="bg" src="./assets/hero-bg.png" alt="유주 돌잔치 배경" />
+        <img class="title-img" src="./assets/title.png" alt="유주의 첫돌" />
+
+        <div class="baby">
+          <img class="body-img" src="./assets/body.png" alt="한복 몸통" />
+          <img class="face-img" src="./assets/face.png" alt="유주 얼굴" />
+          <img class="sleeve-img" src="./assets/sleeve-left.png" alt="왼팔" />
+        </div>
+
+        <div class="props">
+          <img class="prop prop-bag" src="./assets/prop-bag.png" alt="복주머니" />
+          <img class="prop prop-ball" src="./assets/prop-ball.png" alt="축구공" />
+          <img class="prop prop-pencil" src="./assets/prop-pencil.png" alt="연필" />
+          <img class="prop prop-money" src="./assets/prop-money.png" alt="오만원" />
+          <img class="prop prop-thread" src="./assets/prop-thread.png" alt="실타래" />
+          <img class="prop prop-gavel" src="./assets/prop-gavel.png" alt="판사봉" />
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <section class="card intro">
+        <p class="eyebrow">Yuju's 1st Birthday</p>
+        <h1>유주의 첫돌에<br />초대합니다</h1>
+        <p>
+          2026년 3월 26일에 태어난 유주가<br />
+          어느덧 첫 생일을 맞이했습니다.<br />
+          소중한 분들과 함께 유주의 첫 번째 생일을<br />
+          따뜻하게 나누고 싶습니다.
+        </p>
+      </section>
+
+      <section class="card">
+        <h2>행사 안내</h2>
+
+        <div class="info-row">
+          <span>일시</span>
+          <strong>2027년 3월 28일 일요일 오후 12시</strong>
+        </div>
+
+        <div class="info-row">
+          <span>장소</span>
+          <strong>라움베베 연회장</strong>
+        </div>
+
+        <div class="info-row">
+          <span>주인공</span>
+          <strong>유주</strong>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>유주의 첫 선택은?</h2>
+        <p class="small">
+          돌잡이 물건을 눌러 의미를 확인해보세요.
+        </p>
+
+        <div class="choice-grid">
+          <button data-title="복주머니" data-desc="복과 행운, 평안한 삶을 의미해요.">
+            <img src="./assets/prop-bag.png" alt="복주머니" />
+            <span>복주머니</span>
+          </button>
+
+          <button data-title="축구공" data-desc="건강한 에너지와 활발한 성장을 의미해요.">
+            <img src="./assets/prop-ball.png" alt="축구공" />
+            <span>축구공</span>
+          </button>
+
+          <button data-title="연필" data-desc="배움과 지혜, 학업운을 의미해요.">
+            <img src="./assets/prop-pencil.png" alt="연필" />
+            <span>연필</span>
+          </button>
+
+          <button data-title="오만원" data-desc="풍요와 재물운을 의미해요.">
+            <img src="./assets/prop-money.png" alt="오만원" />
+            <span>오만원</span>
+          </button>
+
+          <button data-title="실타래" data-desc="장수와 좋은 인연을 의미해요.">
+            <img src="./assets/prop-thread.png" alt="실타래" />
+            <span>실타래</span>
+          </button>
+
+          <button data-title="판사봉" data-desc="리더십과 결단력을 의미해요.">
+            <img src="./assets/prop-gavel.png" alt="판사봉" />
+            <span>판사봉</span>
+          </button>
+        </div>
+
+        <div class="result" id="resultBox">
+          <strong id="resultTitle">돌잡이 물건을 선택해보세요</strong>
+          <p id="resultDesc">유주가 어떤 첫 선택을 할지 함께 상상해보세요.</p>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>초대의 말씀</h2>
+        <p>
+          유주를 아껴주시고 사랑해주신 모든 분들께<br />
+          감사의 마음을 전합니다.<br />
+          귀한 걸음으로 유주의 첫 생일을<br />
+          함께 축복해주세요.
+        </p>
+      </section>
+
+      <section class="buttons">
+        <a href="https://map.naver.com" target="_blank">오시는 길</a>
+        <a href="tel:01000000000">연락하기</a>
+        <a href="#guestbook">방명록 준비중</a>
+      </section>
+
+      <section class="card" id="guestbook">
+        <h2>다음 기능 예정</h2>
+        <p>
+          방명록, 사진 갤러리, 참석 여부, 계좌번호 복사 기능은
+          다음 단계에서 추가할 예정입니다.
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      MMIMO · YUJU 1ST BIRTHDAY
+    </footer>
+  </div>
+
+  <script src="./script.js"></script>
+</body>
+</html>
