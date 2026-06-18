@@ -61,6 +61,7 @@ img {
   width: 96%;
   margin: 0 auto;
   position: relative;
+  top: -10px;
   z-index: 2;
 }
 
@@ -80,7 +81,7 @@ img {
 .sleeve-img {
   position: absolute;
   left: 14%;
-  top: 30%;
+  top: 24%;
   width: 18%;
   z-index: 4;
   transform: rotate(-4deg);
@@ -353,5 +354,6 @@ footer {
     max-width: 480px;
   }
 }
+
 
 
