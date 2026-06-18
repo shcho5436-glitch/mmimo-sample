@@ -84,7 +84,7 @@ img {
   left: 14%;
   top: 13%;
   width: 20%;
-  z-index: 1;
+  z-index: 4;
   transform-origin: 82% 10%;
   transform: rotate(-8deg);
   animation: sleeveHandWave_v2 0.85s ease-in-out infinite !important;
@@ -392,5 +392,6 @@ footer {
     transform: rotate(-14deg);
   }
 }
+
 
 
