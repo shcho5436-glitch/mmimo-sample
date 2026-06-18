@@ -395,3 +395,26 @@ footer {
 
 
 
+
+/* 드래그 기능용 추가 스타일 */
+.prop {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+}
+
+.prop.dragging {
+  cursor: grabbing;
+  animation: none !important;
+  transition: none !important;
+  z-index: 100 !important;
+}
+
+.prop.snap-animate {
+  transition: left 0.22s ease, top 0.22s ease;
+}
+
+.prop.dropped {
+  z-index: 80 !important;
+}
