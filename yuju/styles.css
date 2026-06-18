@@ -40,7 +40,7 @@ img {
   position: absolute;
   top: 34px;
   left: 50%;
-  width: 56%;
+  width: 50%;
   transform: translateX(-50%);
   z-index: 5;
   animation: titleFloat 3.2s ease-in-out infinite;
@@ -50,7 +50,7 @@ img {
 .baby {
   position: absolute;
   left: 50%;
-  top: 53%;
+  top: 56%;
   width: 62%;
   transform: translateX(-50%);
   z-index: 10;
@@ -58,7 +58,8 @@ img {
 
 /* 몸통 */
 .body-img {
-  width: 100%;
+  width: 88%;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
 }
@@ -66,9 +67,9 @@ img {
 /* 얼굴 */
 .face-img {
   position: absolute;
-  top: -48%;
+  top: -62%;
   left: 50%;
-  width: 46%;
+  width: 50%;
   transform: translateX(-50%);
   z-index: 5;
   filter: drop-shadow(0 8px 14px rgba(80, 45, 30, 0.12));
@@ -78,9 +79,9 @@ img {
 /* 왼팔 */
 .sleeve-img {
   position: absolute;
-  left: 11%;
+  left: 16%;
   top: 31%;
-  width: 16%;
+  width: 14%;
   z-index: 4;
   transform: rotate(-4deg);
   animation: sleeveMove 1.6s ease-in-out infinite;
@@ -351,6 +352,7 @@ footer {
     max-width: 480px;
   }
 }
+
 
 
 
