@@ -35,7 +35,7 @@ img {
   width: 100%;
 }
 
-/* 상단 문구 */
+/* 문구: 더 작게 */
 .title-img {
   position: absolute;
   top: 34px;
@@ -46,7 +46,7 @@ img {
   animation: titleFloat 3.2s ease-in-out infinite;
 }
 
-/* 아기 전체 묶음 */
+/* 아기 전체 그룹: 아래쪽 유지 */
 .baby {
   position: absolute;
   left: 50%;
@@ -56,38 +56,38 @@ img {
   z-index: 10;
 }
 
-/* 몸통 */
+/* 몸통: 너무 작아졌던 것에서 조금 키움 */
 .body-img {
-  width: 82%;
+  width: 80%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
 }
 
-/* 얼굴 */
+/* 얼굴: 살짝 작게 + 위로 많이 이동 */
 .face-img {
   position: absolute;
-  top: -142px;
+  top: -92%;
   left: 50%;
-  width: 47%;
+  width: 48%;
   transform: translateX(-50%);
   z-index: 5;
   filter: drop-shadow(0 8px 14px rgba(80, 45, 30, 0.12));
   animation: faceBob 2.4s ease-in-out infinite;
 }
 
-/* 왼팔 */
+/* 왼팔: 조금 키우고 몸통에 붙게 */
 .sleeve-img {
   position: absolute;
-  left: 15%;
-  top: 29%;
-  width: 19%;
+  left: 14%;
+  top: 30%;
+  width: 18%;
   z-index: 4;
   transform: rotate(-4deg);
   animation: sleeveMove 1.6s ease-in-out infinite;
 }
 
-/* 돌잡이 물건 전체 영역 */
+/* 물품들: 약간 위로 */
 .props {
   position: absolute;
   left: 0;
@@ -104,6 +104,7 @@ img {
   animation: propPop 0.7s ease both;
 }
 
+/* 물품들: 크기 전체적으로 축소 */
 .prop-bag {
   left: 6%;
   bottom: 4%;
@@ -352,11 +353,3 @@ footer {
     max-width: 480px;
   }
 }
-
-
-
-
-
-
-
-
