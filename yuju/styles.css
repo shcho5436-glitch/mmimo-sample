@@ -67,7 +67,7 @@ img {
 /* 얼굴 */
 .face-img {
   position: absolute;
-  top: -82%;
+  top: -98%;
   left: 50%;
   width: 52%;
   transform: translateX(-50%);
@@ -79,9 +79,9 @@ img {
 /* 왼팔 */
 .sleeve-img {
   position: absolute;
-  left: 16%;
-  top: 31%;
-  width: 14%;
+  left: 15%;
+  top: 29%;
+  width: 19%;
   z-index: 4;
   transform: rotate(-4deg);
   animation: sleeveMove 1.6s ease-in-out infinite;
@@ -105,43 +105,43 @@ img {
 }
 
 .prop-bag {
-  left: 5%;
+  left: 6%;
   bottom: 4%;
-  width: 14%;
+  width: 11%;
 }
 
 .prop-ball {
-  left: 19%;
+  left: 20%;
   bottom: 1%;
-  width: 15%;
+  width: 12%;
   animation-delay: 0.08s;
 }
 
 .prop-pencil {
-  left: 36%;
+  left: 37%;
   bottom: 0%;
-  width: 13%;
+  width: 10%;
   animation-delay: 0.16s;
 }
 
 .prop-money {
-  left: 48%;
+  left: 49%;
   bottom: 4%;
-  width: 21%;
+  width: 17%;
   animation-delay: 0.24s;
 }
 
 .prop-thread {
-  left: 68%;
+  left: 69%;
   bottom: 4%;
-  width: 16%;
+  width: 13%;
   animation-delay: 0.32s;
 }
 
 .prop-gavel {
-  right: 4%;
+  right: 5%;
   bottom: 7%;
-  width: 12%;
+  width: 10%;
   animation-delay: 0.4s;
 }
 
@@ -352,6 +352,7 @@ footer {
     max-width: 480px;
   }
 }
+
 
 
 
