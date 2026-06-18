@@ -82,11 +82,11 @@ img {
 .sleeve-img {
   position: absolute;
   left: 14%;
-  top: 15%;
+  top: 13%;
   width: 20%;
-  z-index: 4;
+  z-index: 1;
   transform-origin: 82% 10%;
-  transform: rotate(-8deg) translateX(0);
+  transform: rotate(-8deg);
   animation: sleeveHandWave_v2 0.85s ease-in-out infinite !important;
   will-change: transform;
 }
@@ -383,13 +383,14 @@ footer {
 /* 왼팔 손끝 좌우 까딱 애니메이션 - 강제 적용 버전 */
 @keyframes sleeveHandWave_v2 {
   0% {
-    transform: rotate(-14deg) translateX(-3px);
+    transform: rotate(-14deg);
   }
   50% {
-    transform: rotate(14deg) translateX(5px);
+    transform: rotate(14deg);
   }
   100% {
-    transform: rotate(-14deg) translateX(-3px);
+    transform: rotate(-14deg);
   }
 }
+
 
