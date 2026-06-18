@@ -38,9 +38,9 @@ img {
 /* 상단 문구 */
 .title-img {
   position: absolute;
-  top: 28px;
+  top: 30px;
   left: 50%;
-  width: 78%;
+  width: 72%;
   transform: translateX(-50%);
   z-index: 5;
   animation: titleFloat 3.2s ease-in-out infinite;
@@ -66,7 +66,7 @@ img {
 /* 얼굴 */
 .face-img {
   position: absolute;
-  top: -42%;
+  top: -48%;
   left: 50%;
   width: 46%;
   transform: translateX(-50%);
@@ -78,9 +78,9 @@ img {
 /* 왼팔 */
 .sleeve-img {
   position: absolute;
-  left: 5%;
-  top: 29%;
-  width: 17%;
+  left: 11%;
+  top: 31%;
+  width: 16%;
   z-index: 4;
   transform: rotate(-4deg);
   animation: sleeveMove 1.6s ease-in-out infinite;
@@ -91,7 +91,7 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 4%;
+  bottom: 8%;
   height: 18%;
   z-index: 20;
 }
@@ -351,4 +351,5 @@ footer {
     max-width: 480px;
   }
 }
+
 
