@@ -38,9 +38,9 @@ img {
 /* 상단 문구 */
 .title-img {
   position: absolute;
-  top: 26px;
+  top: 28px;
   left: 50%;
-  width: 82%;
+  width: 78%;
   transform: translateX(-50%);
   z-index: 5;
   animation: titleFloat 3.2s ease-in-out infinite;
@@ -50,8 +50,8 @@ img {
 .baby {
   position: absolute;
   left: 50%;
-  top: 45%;
-  width: 66%;
+  top: 43%;
+  width: 78%;
   transform: translateX(-50%);
   z-index: 10;
 }
@@ -66,9 +66,9 @@ img {
 /* 얼굴 */
 .face-img {
   position: absolute;
-  top: -41%;
+  top: -42%;
   left: 50%;
-  width: 43%;
+  width: 46%;
   transform: translateX(-50%);
   z-index: 5;
   filter: drop-shadow(0 8px 14px rgba(80, 45, 30, 0.12));
@@ -79,8 +79,8 @@ img {
 .sleeve-img {
   position: absolute;
   left: 5%;
-  top: 28%;
-  width: 16%;
+  top: 29%;
+  width: 17%;
   z-index: 4;
   transform: rotate(-4deg);
   animation: sleeveMove 1.6s ease-in-out infinite;
@@ -91,7 +91,7 @@ img {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 5%;
+  bottom: 4%;
   height: 18%;
   z-index: 20;
 }
@@ -105,41 +105,41 @@ img {
 
 .prop-bag {
   left: 5%;
-  bottom: 6%;
+  bottom: 4%;
   width: 14%;
 }
 
 .prop-ball {
   left: 19%;
-  bottom: 3%;
+  bottom: 1%;
   width: 15%;
   animation-delay: 0.08s;
 }
 
 .prop-pencil {
   left: 36%;
-  bottom: 1%;
+  bottom: 0%;
   width: 13%;
   animation-delay: 0.16s;
 }
 
 .prop-money {
   left: 48%;
-  bottom: 6%;
+  bottom: 4%;
   width: 21%;
   animation-delay: 0.24s;
 }
 
 .prop-thread {
   left: 68%;
-  bottom: 6%;
+  bottom: 4%;
   width: 16%;
   animation-delay: 0.32s;
 }
 
 .prop-gavel {
   right: 4%;
-  bottom: 9%;
+  bottom: 7%;
   width: 12%;
   animation-delay: 0.4s;
 }
@@ -351,3 +351,4 @@ footer {
     max-width: 480px;
   }
 }
+
