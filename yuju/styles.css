@@ -85,9 +85,10 @@ img {
   top: 15%;
   width: 20%;
   z-index: 4;
-  transform: rotate(-6deg);
-  transform-origin: 25% 12%;
-  animation: sleeveMove 1.1s ease-in-out infinite;
+  transform-origin: 22% 8%;
+  transform: rotate(-8deg) translateX(0);
+  animation: sleeveHandWave_v2 0.85s ease-in-out infinite !important;
+  will-change: transform;
 }
 
 /* 물품들: 약간 위로 */
@@ -378,3 +379,16 @@ footer {
 
 
 
+
+/* 왼팔 손끝 좌우 까딱 애니메이션 - 강제 적용 버전 */
+@keyframes sleeveHandWave_v2 {
+  0% {
+    transform: rotate(-14deg) translateX(-3px);
+  }
+  50% {
+    transform: rotate(14deg) translateX(5px);
+  }
+  100% {
+    transform: rotate(-14deg) translateX(-3px);
+  }
+}
