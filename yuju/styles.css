@@ -58,7 +58,7 @@ img {
 
 /* 몸통: 너무 작아졌던 것에서 조금 키움 */
 .body-img {
-  width: 80%;
+  width: 88%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -68,8 +68,8 @@ img {
 .face-img {
   position: absolute;
   top: -92%;
-  left: 50%;
-  width: 48%;
+  left: 46%;
+  width: 52%;
   transform: translateX(-50%);
   z-index: 5;
   filter: drop-shadow(0 8px 14px rgba(80, 45, 30, 0.12));
@@ -353,3 +353,4 @@ footer {
     max-width: 480px;
   }
 }
+
