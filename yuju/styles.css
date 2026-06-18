@@ -70,7 +70,7 @@ img {
   position: absolute;
   top: -92%;
   left: 46%;
-  width: 50%;
+  width: 52%;
   transform: translateX(-50%);
   z-index: 5;
   filter: drop-shadow(0 8px 14px rgba(80, 45, 30, 0.12));
@@ -81,8 +81,8 @@ img {
 .sleeve-img {
   position: absolute;
   left: 14%;
-  top: 24%;
-  width: 18%;
+  top: 21%;
+  width: 20%;
   z-index: 4;
   transform: rotate(-4deg);
   animation: sleeveMove 1.6s ease-in-out infinite;
@@ -354,6 +354,7 @@ footer {
     max-width: 480px;
   }
 }
+
 
 
 
