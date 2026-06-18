@@ -38,9 +38,9 @@ img {
 /* 상단 문구 */
 .title-img {
   position: absolute;
-  top: 32px;
+  top: 34px;
   left: 50%;
-  width: 64%;
+  width: 56%;
   transform: translateX(-50%);
   z-index: 5;
   animation: titleFloat 3.2s ease-in-out infinite;
@@ -50,8 +50,8 @@ img {
 .baby {
   position: absolute;
   left: 50%;
-  top: 48%;
-  width: 70%;
+  top: 53%;
+  width: 62%;
   transform: translateX(-50%);
   z-index: 10;
 }
@@ -351,6 +351,7 @@ footer {
     max-width: 480px;
   }
 }
+
 
 
 
