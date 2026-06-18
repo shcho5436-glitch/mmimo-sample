@@ -58,7 +58,7 @@ img {
 
 /* 몸통 */
 .body-img {
-  width: 88%;
+  width: 72%;
   margin: 0 auto;
   position: relative;
   z-index: 2;
@@ -67,9 +67,9 @@ img {
 /* 얼굴 */
 .face-img {
   position: absolute;
-  top: -62%;
+  top: -82%;
   left: 50%;
-  width: 50%;
+  width: 52%;
   transform: translateX(-50%);
   z-index: 5;
   filter: drop-shadow(0 8px 14px rgba(80, 45, 30, 0.12));
@@ -352,6 +352,7 @@ footer {
     max-width: 480px;
   }
 }
+
 
 
 
