@@ -70,11 +70,12 @@ img {
   position: absolute;
   top: -92%;
   left: 46%;
-  width: 52%;
-  transform: translateX(-50%);
+  width: 50%;
+  transform: translateX(-50%) rotate(-10deg);
+  transform-origin: center bottom;
   z-index: 5;
   filter: drop-shadow(0 8px 14px rgba(80, 45, 30, 0.12));
-  animation: faceBob 2.4s ease-in-out infinite;
+  animation: faceBob 1.2s ease-in-out infinite;
 }
 
 /* 왼팔: 조금 키우고 몸통에 붙게 */
@@ -306,9 +307,16 @@ footer {
 }
 
 @keyframes faceBob {
-  0%, 100% {
-    transform: translateX(-50%) translateY(0);
+  0% {
+    transform: translateX(-50%) rotate(-10deg);
   }
+  50% {
+    transform: translateX(-50%) rotate(10deg);
+  }
+  100% {
+    transform: translateX(-50%) rotate(-10deg);
+  }
+}
   50% {
     transform: translateX(-50%) translateY(-7px);
   }
@@ -354,6 +362,7 @@ footer {
     max-width: 480px;
   }
 }
+
 
 
 
