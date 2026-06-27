@@ -555,16 +555,10 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* === Stop face motion after drop === */
+/* 드래그앤드롭 후 환호 상태에서는 고개 흔들림 정지 */
+.baby.celebrating .face-img {
+  animation: none !important;
+  transform: translateX(-50%) rotate(0deg) !important;
+}
+/* === end Stop face motion after drop === */
