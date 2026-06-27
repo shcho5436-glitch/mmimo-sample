@@ -418,7 +418,7 @@ footer {
 .prop.dropped {
   z-index: 80 !important;
 }
-/* === Yuju celebration drag-drop v3 === */
+/* === Yuju celebration drag-drop v4 === */
 
 /* 드래그 가능한 물품 */
 .prop {
@@ -440,11 +440,11 @@ footer {
   z-index: 100 !important;
 }
 
-/* 새 한복 몸통: 기존보다 살짝 위 + 살짝 왼쪽 */
+/* 새 한복 몸통: 진짜 조금만 왼쪽 위 */
 .body2-img {
   position: absolute;
-  top: -2%;
-  left: 47%;
+  top: -3%;
+  left: 46.5%;
   width: 102%;
   transform: translateX(-50%);
   z-index: 2;
@@ -461,21 +461,17 @@ footer {
   z-index: 4;
 }
 
-/* 왼팔:
-   회전축을 반대로 조정.
-   목표는 겨드랑이/몸통 접합부가 고정되고 손끝이 흔들리는 느낌 */
+/* 양팔 거리 좁힘 */
 .cheer-arm-left {
-  left: -3%;
+  left: 2%;
   top: -20%;
   width: 35%;
   transform-origin: 14% 76%;
   transform: scaleX(-1) rotate(-22deg);
 }
 
-/* 오른팔:
-   왼팔과 반대쪽 겨드랑이/몸통 접합부를 회전축으로 설정 */
 .cheer-arm-right {
-  right: -3%;
+  right: 2%;
   top: -20%;
   width: 35%;
   transform-origin: 86% 76%;
@@ -520,5 +516,6 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
+
 
 
