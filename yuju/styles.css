@@ -453,8 +453,8 @@ footer {
   --cheer-arm-top: -10%;
   --cheer-arm-width: 35%;
 
-  --cheer-open-angle: 42deg;
-  --cheer-close-angle: 10deg;
+  --cheer-open-angle: 10deg;
+  --cheer-close-angle: 2deg;
   --cheer-speed: 0.45s;
 }
 
@@ -555,6 +555,7 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
+
 
 
 
