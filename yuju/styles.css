@@ -70,7 +70,7 @@ img {
   position: absolute;
   top: -92%;
   left: 46%;
-  width: 50%;
+  width: 53%;
   transform: translateX(-50%) rotate(-10deg);
   transform-origin: center bottom;
   z-index: 5;
@@ -444,7 +444,7 @@ footer {
 */
 
 .baby {
-  --body2-top: -5%;
+  --body2-top: -7%;
   --body2-left: 46%;
   --body2-width: 92%;
 
@@ -453,8 +453,8 @@ footer {
   --cheer-arm-top: -10%;
   --cheer-arm-width: 35%;
 
-  --cheer-open-angle: 48deg;
-  --cheer-close-angle: 6deg;
+  --cheer-open-angle: 42deg;
+  --cheer-close-angle: 10deg;
   --cheer-speed: 0.45s;
 }
 
@@ -555,6 +555,7 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
+
 
 
 
