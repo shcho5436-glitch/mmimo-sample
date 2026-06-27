@@ -555,7 +555,7 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
-/* === Real prop held in left hand v2 === */
+/* === Real prop held in left hand v3 === */
 /*
   드래그한 진짜 물품이 왼손에 붙어 있는 상태.
   위치는 script.js의 handXRatio / handYRatio에서 조정.
@@ -563,22 +563,31 @@ footer {
 .prop.real-held-prop {
   z-index: 130 !important;
   pointer-events: auto !important;
-  animation: realHeldLeftHandWave_v2 0.45s ease-in-out infinite !important;
+  animation: realHeldLeftHandWave_v3 0.45s ease-in-out infinite !important;
   transform-origin: 82% 82%;
   will-change: transform;
 }
 
 /*
-  왼팔과 같이 흔들리는 느낌:
-  단순 회전이 아니라 왼쪽/위쪽으로 살짝 같이 이동.
+  기존 좌우 느낌 대신 위아래로 움직이도록 변경
 */
-@keyframes realHeldLeftHandWave_v2 {
+@keyframes realHeldLeftHandWave_v3 {
   0%, 100% {
-    transform: rotate(-2deg) translateX(0px) translateY(0px);
+    transform: translateY(0px);
   }
   50% {
-    transform: rotate(-10deg) translateX(-5px) translateY(-3px);
+    transform: translateY(-7px);
   }
 }
 
-/* === end Real prop held in left hand v2 === */
+/* 혹시 held-prop가 남아 있어도 절대 보이지 않게 */
+.held-prop {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
+  pointer-events: none !important;
+}
+
+/* === end Real prop held in left hand v3 === */
