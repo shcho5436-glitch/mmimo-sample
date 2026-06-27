@@ -15,7 +15,6 @@
   const baby = document.querySelector(".baby");
   const propsLayer = document.querySelector(".props");
   const props = document.querySelectorAll(".props .prop");
-  const heldProp = document.querySelector(".held-prop");
 
   let activeProp = null;
   let pointerOffsetX = 0;
@@ -38,10 +37,6 @@
     return prop.alt || prop.dataset.choice || "돌잡이 물건";
   }
 
-  function findPropByLabel(label) {
-    return Array.from(props).find((prop) => getLabelFromProp(prop) === label) || null;
-  }
-
   function saveHomePosition(prop) {
     if (!propsLayer || !prop) return;
 
@@ -54,47 +49,10 @@
 
   function saveAllHomePositions() {
     props.forEach((prop) => {
-      if (!prop.classList.contains("dragging")) saveHomePosition(prop);
+      if (!prop.classList.contains("dragging")) {
+        saveHomePosition(prop);
+      }
     });
-  }
-
-  function parkPropAtHome(prop) {
-    if (!prop) return;
-
-    const homeLeft = Number(prop.dataset.homeLeft || 0);
-    const homeTop = Number(prop.dataset.homeTop || 0);
-
-    prop.style.left = `${homeLeft}px`;
-    prop.style.top = `${homeTop}px`;
-    prop.style.right = "auto";
-    prop.style.bottom = "auto";
-  }
-
-  function clearHeldState() {
-    props.forEach((prop) => {
-      prop.classList.remove("is-held-source", "dragging", "returning");
-    });
-
-    if (baby) baby.classList.remove("has-held-prop");
-
-    if (heldProp) {
-      heldProp.removeAttribute("src");
-      heldProp.setAttribute("alt", "선택한 물품");
-    }
-  }
-
-  function setHeldPropFromSource(sourceProp) {
-    if (!sourceProp || !heldProp || !baby) return;
-
-    clearHeldState();
-
-    parkPropAtHome(sourceProp);
-    sourceProp.classList.add("is-held-source");
-
-    heldProp.src = sourceProp.currentSrc || sourceProp.src;
-    heldProp.alt = getLabelFromProp(sourceProp);
-
-    baby.classList.add("has-held-prop");
   }
 
   function returnPropHome(prop) {
@@ -126,10 +84,6 @@
       });
 
       button.classList.add("active");
-
-      const sourceProp = findPropByLabel(label);
-      if (sourceProp) setHeldPropFromSource(sourceProp);
-
       showResult(label);
       triggerCelebration();
     });
@@ -146,9 +100,8 @@
 
   props.forEach((prop) => {
     prop.addEventListener("pointerdown", (event) => {
-      if (prop.classList.contains("is-held-source")) return;
-
       event.preventDefault();
+
       activeProp = prop;
 
       const propRect = prop.getBoundingClientRect();
@@ -190,13 +143,14 @@
 
       const label = getLabelFromProp(prop);
 
-      setHeldPropFromSource(prop);
+      returnPropHome(prop);
       showResult(label);
       triggerCelebration();
     });
 
     prop.addEventListener("pointercancel", () => {
       if (activeProp !== prop) return;
+
       activeProp = null;
       returnPropHome(prop);
     });

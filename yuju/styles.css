@@ -555,130 +555,19 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
-/* === Final held prop and soft face motion v1 === */
-
-/* 선택된 원본 물품은 아래 줄에서 숨김 */
-.prop.is-held-source {
+/* === Disable held prop clone v1 === */
+/* 손 근처에 딸려오는 작은 선택 물품 복제 이미지 완전 차단 */
+.held-prop {
+  display: none !important;
   opacity: 0 !important;
+  visibility: hidden !important;
+  width: 0 !important;
+  height: 0 !important;
   pointer-events: none !important;
 }
 
-/* 선택된 물품: 화면 기준 오른쪽 손 쪽 */
-.held-prop {
-  position: absolute !important;
-  left: auto !important;
-  right: 2% !important;
-  top: 2% !important;
-  width: 17% !important;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 8 !important;
-  transform-origin: 20% 80%;
-  will-change: transform;
-}
-
-/* 환호 상태에서 선택 물품 표시 + 팔과 비슷하게 작게 흔들림 */
-.baby.celebrating.has-held-prop .held-prop {
-  opacity: 1 !important;
-  animation: heldPropFinalWave_v1 var(--cheer-speed) ease-in-out infinite !important;
-}
-
-/* 오른손 쪽 물품 흔들림 */
-@keyframes heldPropFinalWave_v1 {
-  0%, 100% {
-    transform: rotate(3deg) translateX(0px) translateY(0px);
-  }
-  50% {
-    transform: rotate(10deg) translateX(-1px) translateY(1px);
-  }
-}
-
-/* 드래그 후 얼굴: 완전 정지하지 않고 약하게 좌우 까딱 */
-.baby.celebrating .face-img {
-  animation: faceAfterDropFinal_v1 1.8s ease-in-out infinite !important;
-  transform-origin: center bottom !important;
-}
-
-@keyframes faceAfterDropFinal_v1 {
-  0%, 100% {
-    transform: translateX(-50%) rotate(-4deg);
-  }
-  50% {
-    transform: translateX(-50%) rotate(4deg);
-  }
-}
-
-/* 팔 흔들림도 최종 애니메이션 이름으로 강제 적용 */
-.baby.celebrating .cheer-arm-left {
-  animation: cheerLeftFinalWave_v1 var(--cheer-speed) ease-in-out infinite !important;
-}
-
-.baby.celebrating .cheer-arm-right {
-  animation: cheerRightFinalWave_v1 var(--cheer-speed) ease-in-out infinite !important;
-}
-
-/* 현재 팔 회전각은 약 10도 기준 */
-@keyframes cheerLeftFinalWave_v1 {
-  0%, 100% {
-    transform: scaleX(-1) rotate(-2deg);
-  }
-  50% {
-    transform: scaleX(-1) rotate(-10deg);
-  }
-}
-
-@keyframes cheerRightFinalWave_v1 {
-  0%, 100% {
-    transform: scaleX(-1) rotate(2deg);
-  }
-  50% {
-    transform: scaleX(-1) rotate(10deg);
-  }
-}
-
-/* === end Final held prop and soft face motion v1 === */
-/* === Fix held prop left hand no alt v1 === */
-
-/* 선택된 원본 물품은 아래 줄에서 숨김 */
 .prop.is-held-source {
-  opacity: 0 !important;
-  pointer-events: none !important;
-}
-
-/* 선택 물품: 화면 기준 왼팔 쪽으로 이동 */
-.held-prop {
-  position: absolute !important;
-  left: 8% !important;
-  right: auto !important;
-  top: 5% !important;
-  width: 16% !important;
-  opacity: 0;
-  pointer-events: none;
-  z-index: 8 !important;
-  transform-origin: 80% 80%;
-  will-change: transform;
-
-  /* 이미지가 혹시 깨져도 "선택한 물품" 같은 글자 절대 안 보이게 */
-  font-size: 0 !important;
-  color: transparent !important;
-  text-indent: -9999px !important;
-  overflow: hidden !important;
-}
-
-/* 환호 상태에서만 보이기 */
-.baby.celebrating.has-held-prop .held-prop {
   opacity: 1 !important;
-  animation: heldPropLeftHandWave_v1 var(--cheer-speed) ease-in-out infinite !important;
+  pointer-events: auto !important;
 }
-
-/* 왼팔 쪽 물품 흔들림 */
-@keyframes heldPropLeftHandWave_v1 {
-  0%, 100% {
-    transform: rotate(-3deg) translateX(0px) translateY(0px);
-  }
-  50% {
-    transform: rotate(-10deg) translateX(1px) translateY(1px);
-  }
-}
-
-/* === end Fix held prop left hand no alt v1 === */
+/* === end Disable held prop clone v1 === */
