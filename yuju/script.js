@@ -12,6 +12,14 @@
   const resultTitle = resultBox ? resultBox.querySelector("strong") : null;
   const resultText = resultBox ? resultBox.querySelector("p") : null;
 
+  const baby = document.querySelector(".baby");
+  const propsLayer = document.querySelector(".props");
+  const props = document.querySelectorAll(".props .prop");
+
+  let activeProp = null;
+  let pointerOffsetX = 0;
+  let pointerOffsetY = 0;
+
   function showResult(label) {
     if (!resultTitle || !resultText) return;
 
@@ -19,7 +27,53 @@
     resultText.textContent = meanings[label] || "유주가 어떤 첫 선택을 할지 함께 상상해보세요.";
   }
 
-  // 기존 돌잡이 버튼 클릭 기능 유지
+  function triggerCelebration() {
+    if (!baby) return;
+
+    baby.classList.remove("celebrating");
+    void baby.offsetWidth;
+    baby.classList.add("celebrating");
+  }
+
+  function getLabelFromProp(prop) {
+    return prop.alt || prop.dataset.choice || "돌잡이 물건";
+  }
+
+  function saveHomePosition(prop) {
+    if (!propsLayer || !prop) return;
+
+    const layerRect = propsLayer.getBoundingClientRect();
+    const propRect = prop.getBoundingClientRect();
+
+    prop.dataset.homeLeft = String(propRect.left - layerRect.left);
+    prop.dataset.homeTop = String(propRect.top - layerRect.top);
+  }
+
+  function saveAllHomePositions() {
+    props.forEach((prop) => {
+      saveHomePosition(prop);
+    });
+  }
+
+  function returnPropHome(prop) {
+    if (!prop || !propsLayer) return;
+
+    const homeLeft = Number(prop.dataset.homeLeft || 0);
+    const homeTop = Number(prop.dataset.homeTop || 0);
+
+    prop.classList.remove("dragging");
+    prop.classList.add("returning");
+
+    prop.style.left = `${homeLeft}px`;
+    prop.style.top = `${homeTop}px`;
+    prop.style.right = "auto";
+    prop.style.bottom = "auto";
+
+    window.setTimeout(() => {
+      prop.classList.remove("returning");
+    }, 300);
+  }
+
   document.querySelectorAll(".choice-grid button").forEach((button) => {
     button.addEventListener("click", () => {
       const img = button.querySelector("img");
@@ -31,52 +85,18 @@
 
       button.classList.add("active");
       showResult(label);
+      triggerCelebration();
     });
   });
 
-  // 메인 이미지 위 용품 드래그 기능
-  const propsLayer = document.querySelector(".props");
-  const face = document.querySelector(".face-img");
-  const props = document.querySelectorAll(".props .prop");
-
-  if (!propsLayer || !face || props.length === 0) {
-    console.warn("드래그 기능을 위한 요소를 찾지 못했습니다.");
+  if (!propsLayer || props.length === 0) {
+    console.warn("드래그 기능을 위한 물품 레이어를 찾지 못했습니다.");
     return;
   }
 
-  let activeProp = null;
-  let pointerOffsetX = 0;
-  let pointerOffsetY = 0;
-
-  function getLabelFromProp(prop) {
-    return prop.alt || prop.dataset.choice || "돌잡이 물건";
-  }
-
-  function snapToFaceCenter(prop) {
-    const layerRect = propsLayer.getBoundingClientRect();
-    const faceRect = face.getBoundingClientRect();
-    const propRect = prop.getBoundingClientRect();
-
-    const faceCenterX = faceRect.left + faceRect.width / 2;
-    const faceCenterY = faceRect.top + faceRect.height / 2;
-
-    const nextLeft = faceCenterX - layerRect.left - propRect.width / 2;
-    const nextTop = faceCenterY - layerRect.top - propRect.height / 2;
-
-    prop.classList.remove("dragging");
-    prop.classList.add("snap-animate", "dropped");
-
-    prop.style.left = `${nextLeft}px`;
-    prop.style.top = `${nextTop}px`;
-    prop.style.right = "auto";
-    prop.style.bottom = "auto";
-
-    window.setTimeout(() => {
-      prop.classList.remove("snap-animate");
-    }, 260);
-
-    showResult(getLabelFromProp(prop));
-  }
+  window.requestAnimationFrame(saveAllHomePositions);
+  window.addEventListener("load", saveAllHomePositions);
+  window.addEventListener("resize", saveAllHomePositions);
 
   props.forEach((prop) => {
     prop.addEventListener("pointerdown", (event) => {
@@ -90,14 +110,17 @@
       pointerOffsetX = event.clientX - propRect.left;
       pointerOffsetY = event.clientY - propRect.top;
 
-      // 기존 bottom/right 기반 위치를 드래그 가능한 left/top px 위치로 변환
       prop.style.left = `${propRect.left - layerRect.left}px`;
       prop.style.top = `${propRect.top - layerRect.top}px`;
       prop.style.right = "auto";
       prop.style.bottom = "auto";
 
+      prop.classList.remove("returning");
       prop.classList.add("dragging");
-      prop.setPointerCapture(event.pointerId);
+
+      try {
+        prop.setPointerCapture(event.pointerId);
+      } catch (error) {}
     });
 
     prop.addEventListener("pointermove", (event) => {
@@ -117,19 +140,22 @@
 
       try {
         prop.releasePointerCapture(event.pointerId);
-      } catch (error) {
-        // 일부 브라우저에서 이미 해제된 경우 무시
-      }
+      } catch (error) {}
 
       activeProp = null;
-      snapToFaceCenter(prop);
+
+      const label = getLabelFromProp(prop);
+
+      returnPropHome(prop);
+      showResult(label);
+      triggerCelebration();
     });
 
     prop.addEventListener("pointercancel", () => {
       if (activeProp !== prop) return;
 
       activeProp = null;
-      prop.classList.remove("dragging");
+      returnPropHome(prop);
     });
   });
 });

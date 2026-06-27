@@ -418,3 +418,101 @@ footer {
 .prop.dropped {
   z-index: 80 !important;
 }
+/* === Yuju celebration drag-drop v1 === */
+
+/* 드래그 가능한 물품 */
+.prop {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-drag: none;
+  touch-action: none;
+}
+
+.prop.dragging {
+  cursor: grabbing;
+  animation: none !important;
+  transition: none !important;
+  z-index: 120 !important;
+}
+
+.prop.returning {
+  transition: left 0.25s ease, top 0.25s ease;
+  z-index: 100 !important;
+}
+
+/* 새 한복 몸통: 기존 몸통과 같은 자리 근처에 겹쳐놓음 */
+.body2-img {
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  width: 96%;
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* 환호 팔 공통 */
+.cheer-arm {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 4;
+}
+
+/* 임시 위치값: 추후 보정 가능 */
+.cheer-arm-left {
+  left: 2%;
+  top: -28%;
+  width: 32%;
+  transform-origin: 82% 78%;
+  transform: rotate(-18deg);
+}
+
+.cheer-arm-right {
+  right: 2%;
+  top: -28%;
+  width: 32%;
+  transform-origin: 18% 78%;
+  transform: rotate(18deg);
+}
+
+/* 드래그 성공 후 환호 상태 */
+.baby.celebrating .body-img,
+.baby.celebrating .sleeve-img {
+  opacity: 0;
+}
+
+.baby.celebrating .body2-img,
+.baby.celebrating .cheer-arm {
+  opacity: 1;
+}
+
+.baby.celebrating .cheer-arm-left {
+  animation: cheerLeftWave 0.55s ease-in-out infinite;
+}
+
+.baby.celebrating .cheer-arm-right {
+  animation: cheerRightWave 0.55s ease-in-out infinite;
+}
+
+@keyframes cheerLeftWave {
+  0%, 100% {
+    transform: rotate(-26deg);
+  }
+  50% {
+    transform: rotate(-8deg);
+  }
+}
+
+@keyframes cheerRightWave {
+  0%, 100% {
+    transform: rotate(26deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+/* === end Yuju celebration drag-drop v1 === */
