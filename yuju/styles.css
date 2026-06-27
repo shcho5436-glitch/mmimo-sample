@@ -418,7 +418,7 @@ footer {
 .prop.dropped {
   z-index: 80 !important;
 }
-/* === Yuju celebration drag-drop v1 === */
+/* === Yuju celebration drag-drop v2 === */
 
 /* 드래그 가능한 물품 */
 .prop {
@@ -440,12 +440,12 @@ footer {
   z-index: 100 !important;
 }
 
-/* 새 한복 몸통: 기존 몸통과 같은 자리 근처에 겹쳐놓음 */
+/* 새 한복 몸통: 위치/크기 보정 */
 .body2-img {
   position: absolute;
-  top: -10px;
+  top: 2%;
   left: 50%;
-  width: 96%;
+  width: 102%;
   transform: translateX(-50%);
   z-index: 2;
   opacity: 0;
@@ -461,21 +461,23 @@ footer {
   z-index: 4;
 }
 
-/* 임시 위치값: 추후 보정 가능 */
+/* 손 방향 반대 문제 해결:
+   scaleX(-1)로 좌우 반전해서 손 방향 수정
+   위치는 임시 보정값이므로 추후 미세조정 가능 */
 .cheer-arm-left {
-  left: 2%;
-  top: -28%;
-  width: 32%;
-  transform-origin: 82% 78%;
-  transform: rotate(-18deg);
+  left: -3%;
+  top: -20%;
+  width: 35%;
+  transform-origin: 86% 76%;
+  transform: scaleX(-1) rotate(-22deg);
 }
 
 .cheer-arm-right {
-  right: 2%;
-  top: -28%;
-  width: 32%;
-  transform-origin: 18% 78%;
-  transform: rotate(18deg);
+  right: -3%;
+  top: -20%;
+  width: 35%;
+  transform-origin: 14% 76%;
+  transform: scaleX(-1) rotate(22deg);
 }
 
 /* 드래그 성공 후 환호 상태 */
@@ -499,20 +501,21 @@ footer {
 
 @keyframes cheerLeftWave {
   0%, 100% {
-    transform: rotate(-26deg);
+    transform: scaleX(-1) rotate(-30deg);
   }
   50% {
-    transform: rotate(-8deg);
+    transform: scaleX(-1) rotate(-10deg);
   }
 }
 
 @keyframes cheerRightWave {
   0%, 100% {
-    transform: rotate(26deg);
+    transform: scaleX(-1) rotate(30deg);
   }
   50% {
-    transform: rotate(8deg);
+    transform: scaleX(-1) rotate(10deg);
   }
 }
 
 /* === end Yuju celebration drag-drop v1 === */
+
