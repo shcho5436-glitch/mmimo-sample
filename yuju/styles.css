@@ -637,3 +637,48 @@ footer {
 }
 
 /* === end Final held prop and soft face motion v1 === */
+/* === Fix held prop left hand no alt v1 === */
+
+/* 선택된 원본 물품은 아래 줄에서 숨김 */
+.prop.is-held-source {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+/* 선택 물품: 화면 기준 왼팔 쪽으로 이동 */
+.held-prop {
+  position: absolute !important;
+  left: 8% !important;
+  right: auto !important;
+  top: 5% !important;
+  width: 16% !important;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 8 !important;
+  transform-origin: 80% 80%;
+  will-change: transform;
+
+  /* 이미지가 혹시 깨져도 "선택한 물품" 같은 글자 절대 안 보이게 */
+  font-size: 0 !important;
+  color: transparent !important;
+  text-indent: -9999px !important;
+  overflow: hidden !important;
+}
+
+/* 환호 상태에서만 보이기 */
+.baby.celebrating.has-held-prop .held-prop {
+  opacity: 1 !important;
+  animation: heldPropLeftHandWave_v1 var(--cheer-speed) ease-in-out infinite !important;
+}
+
+/* 왼팔 쪽 물품 흔들림 */
+@keyframes heldPropLeftHandWave_v1 {
+  0%, 100% {
+    transform: rotate(-3deg) translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: rotate(-10deg) translateX(1px) translateY(1px);
+  }
+}
+
+/* === end Fix held prop left hand no alt v1 === */
