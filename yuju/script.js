@@ -17,17 +17,20 @@
   const props = document.querySelectorAll(".props .prop");
 
   let activeProp = null;
+  let heldProp = null;
   let pointerOffsetX = 0;
   let pointerOffsetY = 0;
 
   function showResult(label) {
     if (!resultTitle || !resultText) return;
+
     resultTitle.textContent = `${label} 선택!`;
     resultText.textContent = meanings[label] || "유주가 어떤 첫 선택을 할지 함께 상상해보세요.";
   }
 
   function triggerCelebration() {
     if (!baby) return;
+
     baby.classList.remove("celebrating");
     void baby.offsetWidth;
     baby.classList.add("celebrating");
@@ -49,7 +52,7 @@
 
   function saveAllHomePositions() {
     props.forEach((prop) => {
-      if (!prop.classList.contains("dragging")) {
+      if (!prop.classList.contains("dragging") && !prop.classList.contains("real-held-prop")) {
         saveHomePosition(prop);
       }
     });
@@ -61,7 +64,7 @@
     const homeLeft = Number(prop.dataset.homeLeft || 0);
     const homeTop = Number(prop.dataset.homeTop || 0);
 
-    prop.classList.remove("dragging");
+    prop.classList.remove("dragging", "returning", "real-held-prop");
     prop.classList.add("returning");
 
     prop.style.left = `${homeLeft}px`;
@@ -74,6 +77,55 @@
     }, 300);
   }
 
+  function returnPreviousHeldProp(exceptProp) {
+    if (heldProp && heldProp !== exceptProp) {
+      returnPropHome(heldProp);
+    }
+  }
+
+  function movePropToLeftHand(prop) {
+    if (!prop || !propsLayer || !baby) return;
+
+    returnPreviousHeldProp(prop);
+
+    const layerRect = propsLayer.getBoundingClientRect();
+    const babyRect = baby.getBoundingClientRect();
+    const propRect = prop.getBoundingClientRect();
+
+    /*
+      실제 물품을 왼손 위치로 보내는 기준값.
+      정밀 위치는 여기 숫자만 바꾸면 됨.
+
+      handXRatio:
+      0.18 = 더 왼쪽
+      0.24 = 현재
+      0.30 = 더 오른쪽
+
+      handYRatio:
+      0.25 = 더 위
+      0.34 = 현재
+      0.43 = 더 아래
+    */
+    const handXRatio = 0.24;
+    const handYRatio = 0.34;
+
+    const handCenterX = babyRect.left + babyRect.width * handXRatio;
+    const handCenterY = babyRect.top + babyRect.height * handYRatio;
+
+    const nextLeft = handCenterX - layerRect.left - propRect.width / 2;
+    const nextTop = handCenterY - layerRect.top - propRect.height / 2;
+
+    prop.classList.remove("dragging", "returning");
+    prop.classList.add("real-held-prop");
+
+    prop.style.left = `${nextLeft}px`;
+    prop.style.top = `${nextTop}px`;
+    prop.style.right = "auto";
+    prop.style.bottom = "auto";
+
+    heldProp = prop;
+  }
+
   document.querySelectorAll(".choice-grid button").forEach((button) => {
     button.addEventListener("click", () => {
       const img = button.querySelector("img");
@@ -84,6 +136,13 @@
       });
 
       button.classList.add("active");
+
+      const sourceProp = Array.from(props).find((prop) => getLabelFromProp(prop) === label);
+
+      if (sourceProp) {
+        movePropToLeftHand(sourceProp);
+      }
+
       showResult(label);
       triggerCelebration();
     });
@@ -115,8 +174,12 @@
       prop.style.right = "auto";
       prop.style.bottom = "auto";
 
-      prop.classList.remove("returning");
+      prop.classList.remove("returning", "real-held-prop");
       prop.classList.add("dragging");
+
+      if (heldProp === prop) {
+        heldProp = null;
+      }
 
       try {
         prop.setPointerCapture(event.pointerId);
@@ -143,7 +206,7 @@
 
       const label = getLabelFromProp(prop);
 
-      returnPropHome(prop);
+      movePropToLeftHand(prop);
       showResult(label);
       triggerCelebration();
     });

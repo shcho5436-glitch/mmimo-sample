@@ -555,8 +555,31 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
-/* === Disable held prop clone v1 === */
-/* 손 근처에 딸려오는 작은 선택 물품 복제 이미지 완전 차단 */
+/* === Real prop held in left hand v1 === */
+
+/*
+  드래그한 진짜 물품 자체가 왼손에 붙는 상태.
+  복제 이미지 held-prop는 사용하지 않음.
+*/
+.prop.real-held-prop {
+  z-index: 130 !important;
+  pointer-events: auto !important;
+  animation: realHeldLeftHandWave_v1 var(--cheer-speed, 0.45s) ease-in-out infinite !important;
+  transform-origin: 80% 80%;
+  will-change: transform;
+}
+
+/* 왼팔과 같이 흔들리는 느낌 */
+@keyframes realHeldLeftHandWave_v1 {
+  0%, 100% {
+    transform: rotate(-2deg) translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: rotate(-10deg) translateX(2px) translateY(1px);
+  }
+}
+
+/* 혹시 held-prop가 남아도 절대 표시하지 않음 */
 .held-prop {
   display: none !important;
   opacity: 0 !important;
@@ -566,26 +589,4 @@ footer {
   pointer-events: none !important;
 }
 
-.prop.is-held-source {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-}
-/* === end Disable held prop clone v1 === */
-/* === Real prop held in hand v1 === */
-/* 드래그한 진짜 물품 이미지가 손에 잡혔을 때 */
-.prop.real-held-prop {
-  z-index: 90 !important;
-  animation: realHeldPropWave_v1 var(--cheer-speed) ease-in-out infinite !important;
-  pointer-events: auto !important;
-}
-
-/* 손에 든 실제 물품의 약한 흔들림 */
-@keyframes realHeldPropWave_v1 {
-  0%, 100% {
-    transform: rotate(-4deg);
-  }
-  50% {
-    transform: rotate(4deg);
-  }
-}
-/* === end Real prop held in hand v1 === */
+/* === end Real prop held in left hand v1 === */
