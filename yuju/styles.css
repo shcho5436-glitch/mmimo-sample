@@ -68,8 +68,8 @@ img {
 /* 얼굴: 살짝 작게 + 위로 많이 이동 */
 .face-img {
   position: absolute;
-  top: -92%;
-  left: 46%;
+  top: -94%;
+  left: 47%;
   width: 53%;
   transform: translateX(-50%) rotate(-10deg);
   transform-origin: center bottom;
@@ -448,8 +448,8 @@ footer {
   --body2-left: 46%;
   --body2-width: 86%;
 
-  --cheer-left-x: 24%;
-  --cheer-right-x: 24%;
+  --cheer-left-x: 23%;
+  --cheer-right-x: 27%;
   --cheer-arm-top: -8%;
   --cheer-arm-width: 35%;
 
@@ -555,6 +555,7 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
+
 
 
 
