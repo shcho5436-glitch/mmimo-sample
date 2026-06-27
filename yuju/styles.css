@@ -555,10 +555,57 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
-/* === Stop face motion after drop === */
-/* 드래그앤드롭 후 환호 상태에서는 고개 흔들림 정지 */
-.baby.celebrating .face-img {
-  animation: none !important;
-  transform: translateX(-50%) rotate(0deg) !important;
+/* === Held prop after drop === */
+
+/* 선택된 원본 물품은 상단 줄에서 숨김 */
+.prop.is-held-source {
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
-/* === end Stop face motion after drop === */
+
+/* 오른손에 들고 있는 물품 */
+.held-prop {
+  position: absolute;
+  right: 6%;
+  top: 8%;
+  width: 17%;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 5;
+  transform-origin: 25% 80%;
+  will-change: transform;
+}
+
+/* 환호 상태 + 손에 물품이 있을 때만 보이기 */
+.baby.celebrating.has-held-prop .held-prop {
+  opacity: 1;
+  animation: heldPropWave var(--cheer-speed) ease-in-out infinite;
+}
+
+@keyframes heldPropWave {
+  0%, 100% {
+    transform: rotate(10deg) translateX(0px) translateY(0px);
+  }
+  50% {
+    transform: rotate(2deg) translateX(-2px) translateY(2px);
+  }
+}
+
+/* === end Held prop after drop === */
+
+/* === Reduce face motion after drop === */
+/* 드래그 후에는 고개를 완전히 멈추지 않고 약하게만 움직이기 */
+.baby.celebrating .face-img {
+  animation: faceBobCelebrate 2s ease-in-out infinite !important;
+  transform: translateX(-50%) rotate(-3deg) !important;
+}
+
+@keyframes faceBobCelebrate {
+  0%, 100% {
+    transform: translateX(-50%) rotate(-3deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(3deg);
+  }
+}
+/* === end Reduce face motion after drop === */
