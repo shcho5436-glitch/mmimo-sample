@@ -444,9 +444,9 @@ footer {
 */
 
 .baby {
-  --body2-top: -3%;
+  --body2-top: -5%;
   --body2-left: 46%;
-  --body2-width: 96%;
+  --body2-width: 92%;
 
   --cheer-left-x: 26%;
   --cheer-right-x: 26%;
@@ -555,6 +555,7 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
+
 
 
 
