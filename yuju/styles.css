@@ -555,57 +555,85 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
-/* === Held prop after drop === */
+/* === Final held prop and soft face motion v1 === */
 
-/* 선택된 원본 물품은 상단 줄에서 숨김 */
+/* 선택된 원본 물품은 아래 줄에서 숨김 */
 .prop.is-held-source {
   opacity: 0 !important;
   pointer-events: none !important;
 }
 
-/* 오른손에 들고 있는 물품 */
+/* 선택된 물품: 화면 기준 오른쪽 손 쪽 */
 .held-prop {
-  position: absolute;
-  right: 6%;
-  top: 8%;
-  width: 17%;
+  position: absolute !important;
+  left: auto !important;
+  right: 2% !important;
+  top: 2% !important;
+  width: 17% !important;
   opacity: 0;
   pointer-events: none;
-  z-index: 5;
-  transform-origin: 25% 80%;
+  z-index: 8 !important;
+  transform-origin: 20% 80%;
   will-change: transform;
 }
 
-/* 환호 상태 + 손에 물품이 있을 때만 보이기 */
+/* 환호 상태에서 선택 물품 표시 + 팔과 비슷하게 작게 흔들림 */
 .baby.celebrating.has-held-prop .held-prop {
-  opacity: 1;
-  animation: heldPropWave var(--cheer-speed) ease-in-out infinite;
+  opacity: 1 !important;
+  animation: heldPropFinalWave_v1 var(--cheer-speed) ease-in-out infinite !important;
 }
 
-@keyframes heldPropWave {
+/* 오른손 쪽 물품 흔들림 */
+@keyframes heldPropFinalWave_v1 {
   0%, 100% {
-    transform: rotate(10deg) translateX(0px) translateY(0px);
+    transform: rotate(3deg) translateX(0px) translateY(0px);
   }
   50% {
-    transform: rotate(2deg) translateX(-2px) translateY(2px);
+    transform: rotate(10deg) translateX(-1px) translateY(1px);
   }
 }
 
-/* === end Held prop after drop === */
-
-/* === Reduce face motion after drop === */
-/* 드래그 후에는 고개를 완전히 멈추지 않고 약하게만 움직이기 */
+/* 드래그 후 얼굴: 완전 정지하지 않고 약하게 좌우 까딱 */
 .baby.celebrating .face-img {
-  animation: faceBobCelebrate 2s ease-in-out infinite !important;
-  transform: translateX(-50%) rotate(-3deg) !important;
+  animation: faceAfterDropFinal_v1 1.8s ease-in-out infinite !important;
+  transform-origin: center bottom !important;
 }
 
-@keyframes faceBobCelebrate {
+@keyframes faceAfterDropFinal_v1 {
   0%, 100% {
-    transform: translateX(-50%) rotate(-3deg);
+    transform: translateX(-50%) rotate(-4deg);
   }
   50% {
-    transform: translateX(-50%) rotate(3deg);
+    transform: translateX(-50%) rotate(4deg);
   }
 }
-/* === end Reduce face motion after drop === */
+
+/* 팔 흔들림도 최종 애니메이션 이름으로 강제 적용 */
+.baby.celebrating .cheer-arm-left {
+  animation: cheerLeftFinalWave_v1 var(--cheer-speed) ease-in-out infinite !important;
+}
+
+.baby.celebrating .cheer-arm-right {
+  animation: cheerRightFinalWave_v1 var(--cheer-speed) ease-in-out infinite !important;
+}
+
+/* 현재 팔 회전각은 약 10도 기준 */
+@keyframes cheerLeftFinalWave_v1 {
+  0%, 100% {
+    transform: scaleX(-1) rotate(-2deg);
+  }
+  50% {
+    transform: scaleX(-1) rotate(-10deg);
+  }
+}
+
+@keyframes cheerRightFinalWave_v1 {
+  0%, 100% {
+    transform: scaleX(-1) rotate(2deg);
+  }
+  50% {
+    transform: scaleX(-1) rotate(10deg);
+  }
+}
+
+/* === end Final held prop and soft face motion v1 === */

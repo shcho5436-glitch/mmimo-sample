@@ -23,14 +23,12 @@
 
   function showResult(label) {
     if (!resultTitle || !resultText) return;
-
     resultTitle.textContent = `${label} 선택!`;
     resultText.textContent = meanings[label] || "유주가 어떤 첫 선택을 할지 함께 상상해보세요.";
   }
 
   function triggerCelebration() {
     if (!baby) return;
-
     baby.classList.remove("celebrating");
     void baby.offsetWidth;
     baby.classList.add("celebrating");
@@ -41,10 +39,7 @@
   }
 
   function findPropByLabel(label) {
-    return Array.from(props).find((prop) => {
-      const propLabel = getLabelFromProp(prop);
-      return propLabel === label;
-    }) || null;
+    return Array.from(props).find((prop) => getLabelFromProp(prop) === label) || null;
   }
 
   function saveHomePosition(prop) {
@@ -59,9 +54,7 @@
 
   function saveAllHomePositions() {
     props.forEach((prop) => {
-      if (!prop.classList.contains("dragging")) {
-        saveHomePosition(prop);
-      }
+      if (!prop.classList.contains("dragging")) saveHomePosition(prop);
     });
   }
 
@@ -77,14 +70,12 @@
     prop.style.bottom = "auto";
   }
 
-  function clearHeldSourceState() {
+  function clearHeldState() {
     props.forEach((prop) => {
-      prop.classList.remove("is-held-source");
+      prop.classList.remove("is-held-source", "dragging", "returning");
     });
 
-    if (baby) {
-      baby.classList.remove("has-held-prop");
-    }
+    if (baby) baby.classList.remove("has-held-prop");
 
     if (heldProp) {
       heldProp.removeAttribute("src");
@@ -95,10 +86,9 @@
   function setHeldPropFromSource(sourceProp) {
     if (!sourceProp || !heldProp || !baby) return;
 
-    clearHeldSourceState();
+    clearHeldState();
 
     parkPropAtHome(sourceProp);
-    sourceProp.classList.remove("dragging", "returning");
     sourceProp.classList.add("is-held-source");
 
     heldProp.src = sourceProp.currentSrc || sourceProp.src;
@@ -138,9 +128,7 @@
       button.classList.add("active");
 
       const sourceProp = findPropByLabel(label);
-      if (sourceProp) {
-        setHeldPropFromSource(sourceProp);
-      }
+      if (sourceProp) setHeldPropFromSource(sourceProp);
 
       showResult(label);
       triggerCelebration();
@@ -161,7 +149,6 @@
       if (prop.classList.contains("is-held-source")) return;
 
       event.preventDefault();
-
       activeProp = prop;
 
       const propRect = prop.getBoundingClientRect();
@@ -188,11 +175,8 @@
 
       const layerRect = propsLayer.getBoundingClientRect();
 
-      const nextLeft = event.clientX - layerRect.left - pointerOffsetX;
-      const nextTop = event.clientY - layerRect.top - pointerOffsetY;
-
-      prop.style.left = `${nextLeft}px`;
-      prop.style.top = `${nextTop}px`;
+      prop.style.left = `${event.clientX - layerRect.left - pointerOffsetX}px`;
+      prop.style.top = `${event.clientY - layerRect.top - pointerOffsetY}px`;
     });
 
     prop.addEventListener("pointerup", (event) => {
@@ -213,7 +197,6 @@
 
     prop.addEventListener("pointercancel", () => {
       if (activeProp !== prop) return;
-
       activeProp = null;
       returnPropHome(prop);
     });
