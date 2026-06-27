@@ -418,7 +418,45 @@ footer {
 .prop.dropped {
   z-index: 80 !important;
 }
-/* === Yuju celebration drag-drop v6 === */
+/* === Yuju celebration drag-drop v8 === */
+
+/*
+  ================================
+  환호 자세 조정용 파라미터
+  ================================
+
+  팔 간격 줄이기:
+  --cheer-left-x / --cheer-right-x 값을 키우면 팔이 가운데로 모임
+  예) 30% 넓음 → 38% 중간 → 44% 좁음 → 48% 더 좁음
+
+  팔을 위/아래로:
+  --cheer-arm-top 값이 작아질수록 위로 올라감
+  예) -20% → -24% 위로, -16% 아래로
+
+  팔 크기:
+  --cheer-arm-width 값을 키우면 팔이 커짐
+
+  움직임 크기:
+  --cheer-open-angle 값을 키우면 더 크게 흔들림
+
+  움직임 속도:
+  --cheer-speed 값이 작아질수록 빠름
+*/
+
+.baby {
+  --body2-top: -3%;
+  --body2-left: 46%;
+  --body2-width: 102%;
+
+  --cheer-left-x: 44%;
+  --cheer-right-x: 44%;
+  --cheer-arm-top: -20%;
+  --cheer-arm-width: 35%;
+
+  --cheer-open-angle: 48deg;
+  --cheer-close-angle: 6deg;
+  --cheer-speed: 0.45s;
+}
 
 /* 드래그 가능한 물품 */
 .prop {
@@ -440,12 +478,12 @@ footer {
   z-index: 100 !important;
 }
 
-/* 새 한복 몸통: 이전 위치 유지 */
+/* 새 한복 몸통 */
 .body2-img {
   position: absolute;
-  top: -3%;
-  left: 46%;
-  width: 102%;
+  top: var(--body2-top);
+  left: var(--body2-left);
+  width: var(--body2-width);
   transform: translateX(-50%);
   z-index: 2;
   opacity: 0;
@@ -461,21 +499,22 @@ footer {
   z-index: 4;
 }
 
-/* 양팔 간격을 더 많이 좁힘 */
+/* 왼팔 */
 .cheer-arm-left {
-  left: 18%;
-  top: -20%;
-  width: 35%;
+  left: var(--cheer-left-x);
+  top: var(--cheer-arm-top);
+  width: var(--cheer-arm-width);
   transform-origin: 14% 76%;
-  transform: scaleX(-1) rotate(-22deg);
+  transform: scaleX(-1) rotate(calc(-1 * var(--cheer-open-angle)));
 }
 
+/* 오른팔 */
 .cheer-arm-right {
-  right: 18%;
-  top: -20%;
-  width: 35%;
+  right: var(--cheer-right-x);
+  top: var(--cheer-arm-top);
+  width: var(--cheer-arm-width);
   transform-origin: 86% 76%;
-  transform: scaleX(-1) rotate(22deg);
+  transform: scaleX(-1) rotate(var(--cheer-open-angle));
 }
 
 /* 드래그 성공 후 환호 상태 */
@@ -490,28 +529,28 @@ footer {
 }
 
 .baby.celebrating .cheer-arm-left {
-  animation: cheerLeftWave 0.55s ease-in-out infinite;
+  animation: cheerLeftWave var(--cheer-speed) ease-in-out infinite;
 }
 
 .baby.celebrating .cheer-arm-right {
-  animation: cheerRightWave 0.55s ease-in-out infinite;
+  animation: cheerRightWave var(--cheer-speed) ease-in-out infinite;
 }
 
 @keyframes cheerLeftWave {
   0%, 100% {
-    transform: scaleX(-1) rotate(-30deg);
+    transform: scaleX(-1) rotate(calc(-1 * var(--cheer-open-angle)));
   }
   50% {
-    transform: scaleX(-1) rotate(-10deg);
+    transform: scaleX(-1) rotate(calc(-1 * var(--cheer-close-angle)));
   }
 }
 
 @keyframes cheerRightWave {
   0%, 100% {
-    transform: scaleX(-1) rotate(30deg);
+    transform: scaleX(-1) rotate(var(--cheer-open-angle));
   }
   50% {
-    transform: scaleX(-1) rotate(10deg);
+    transform: scaleX(-1) rotate(var(--cheer-close-angle));
   }
 }
 
