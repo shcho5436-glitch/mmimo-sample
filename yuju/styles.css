@@ -448,8 +448,8 @@ footer {
   --body2-left: 46%;
   --body2-width: 102%;
 
-  --cheer-left-x: 44%;
-  --cheer-right-x: 44%;
+  --cheer-left-x: 37%;
+  --cheer-right-x: 37%;
   --cheer-arm-top: -20%;
   --cheer-arm-width: 35%;
 
@@ -555,3 +555,4 @@ footer {
 }
 
 /* === end Yuju celebration drag-drop v1 === */
+
