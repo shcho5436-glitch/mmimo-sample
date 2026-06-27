@@ -571,3 +571,21 @@ footer {
   pointer-events: auto !important;
 }
 /* === end Disable held prop clone v1 === */
+/* === Real prop held in hand v1 === */
+/* 드래그한 진짜 물품 이미지가 손에 잡혔을 때 */
+.prop.real-held-prop {
+  z-index: 90 !important;
+  animation: realHeldPropWave_v1 var(--cheer-speed) ease-in-out infinite !important;
+  pointer-events: auto !important;
+}
+
+/* 손에 든 실제 물품의 약한 흔들림 */
+@keyframes realHeldPropWave_v1 {
+  0%, 100% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+}
+/* === end Real prop held in hand v1 === */
