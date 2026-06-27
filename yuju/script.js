@@ -107,7 +107,7 @@
       0.43 = 더 아래
     */
     const handXRatio = 0.10;
-    const handYRatio = 0.15;
+    const handYRatio = 0.14;
 
     const handCenterX = babyRect.left + babyRect.width * handXRatio;
     const handCenterY = babyRect.top + babyRect.height * handYRatio;
@@ -219,6 +219,7 @@
     });
   });
 });
+
 
 
 
