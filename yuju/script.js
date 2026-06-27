@@ -106,8 +106,8 @@
       0.34 = 현재
       0.43 = 더 아래
     */
-    const handXRatio = 0.24;
-    const handYRatio = 0.34;
+    const handXRatio = 0.20;
+    const handYRatio = 0.28;
 
     const handCenterX = babyRect.left + babyRect.width * handXRatio;
     const handCenterY = babyRect.top + babyRect.height * handYRatio;
@@ -219,3 +219,4 @@
     });
   });
 });
+
